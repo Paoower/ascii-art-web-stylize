@@ -1,6 +1,4 @@
 /* styles.css */
-
-/* Existing styles */
 body {
     background: linear-gradient(to right, #6366f1, #a855f7, #ec4899);
     margin: 0;
@@ -181,33 +179,31 @@ body {
     pointer-events: none;
 }
 
-/* New styles */
 #banner {
-    margin-top: 0.5rem; /* Space above select dropdown */
+    margin-top: 0.5rem; 
 }
 
 #sub, #download {
-    margin-top: 0.5rem; /* Space above buttons */
-    border: none; /* Remove border */
-    outline: none; /* Remove outline */
-    border-radius: 0.5rem; /* Rounded corners */
+    margin-top: 0.5rem; 
+    border: none;
+    outline: none;
+    border-radius: 0.5rem; 
 }
 
 #sub {
-    background-color: #6366f1; /* Blue background color */
-    color: #ffffff; /* White text color */
+    background-color: #6366f1;
+    color: #ffffff;
 }
 
 #download {
-    background-color: #d1d5db; /* Pink background color */
-    color: #000000; /* White text color */
+    background-color: #d1d5db; 
+    color: #ffffff; 
 }
 
 #sub:hover, #download:hover {
-    filter: brightness(0.9); /* Hover effect */
+    filter: brightness(0.9); 
 }
 
-/* Update options selector background */
 #banner {
-    background-color: #ffffff; /* White background color */
+    background-color: #ffffff; 
 }
