@@ -16,7 +16,7 @@ const YELLOW = "\033[33;1m"
 const NONE = "\033[0m"
 
 type PageData struct {
-	Lines []string
+	Lines string
 }
 
 func main() {
@@ -64,7 +64,7 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 
 	fileContent := string(f)
 	data := PageData{
-		Lines: strings.Split(fileContent, "\n"),
+		Lines: fileContent,
 	}
 
 	// Execute the template with the provided data

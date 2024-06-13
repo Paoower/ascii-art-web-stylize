@@ -6,7 +6,6 @@
     <title>ASCII Art Web</title>
     <link rel="stylesheet" href="/templates/styles.css">
 </head>
-
 <body class="bg-gradient-to-r">
     <div class="bg-white p-3 rounded-full font-semibold m-4 shadow-lg">   
          <h1 class="text-3xl bg-white bg-clip-text text-transparent bg-gradient-to-r">ASCII Art Project</h1>
@@ -16,7 +15,8 @@
         <form action="/ascii" method="post" class="shadow-lg rounded-lg p-4 w-1/3 flex bg-white flex-col gap-4 m-4">
             <div class="flex flex-col gap-1">
                 <p>Input:</p>
-                <textarea type="text" name="input" id="input" class="border focus:ring-1 rounded-sm p-1"></textarea>
+                <textarea type="text" name="input" id="input" class="border focus:ring-1 rounded-sm p-1" oninput="updateCharCount()"></textarea>
+                <small id="charCount" class="text-gray-500">0 characters</small>
             </div>
             <p>Options:</p>
             <select name="banner" id="banner" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-1">
@@ -28,10 +28,14 @@
         </form>
         <div class="px-4 text-black bg-white shadow-lg rounded-lg p-4 w-1/3 overflow" style="font-family: monospace;">
             <h1 class="text-xl">Output:</h1>
-            {{range .Lines}}
-                <p>{{.}}</p>
-            {{end}}
+            <pre> {{.Lines}} </pre>
         </div>
     </div>
+    <script>
+        function updateCharCount() {
+            const input = document.getElementById('input').value;
+            document.getElementById('charCount').innerText = `${input.length} characters`;
+        }
+    </script>
 </body>
 </html>
