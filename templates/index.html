@@ -8,22 +8,24 @@
     <link rel="stylesheet" href="/templates/styles.css">
     <script defer>
         window.onload = () => {
-            console.log(document.getElementById("output").innerHTML.trim().length)
-            if (document.getElementById("output").innerHTML.trim().length > 0) {
-                document.getElementById("download").disabled = false
-                document.getElementById("download").classList.add("bg-gradient-to-r", "text-white", "cursor-pointer")
-                document.getElementById("download").classList.remove("cursor-not-allowed", "bg-gray-300", "opacity-50")
+            const output = document.getElementById("output").innerHTML.trim().length;
+            const downloadButton = document.getElementById("download");
+
+            if (output > 0) {
+                downloadButton.disabled = false;
+                downloadButton.classList.add("bg-gradient-to-r", "text-white", "cursor-pointer");
+                downloadButton.classList.remove("cursor-not-allowed", "bg-gray-300", "opacity-50", "pointer-events-none");
             } else {
-                document.getElementById("download").disabled = true
-                document.getElementById("download").classList.remove("bg-gradient-to-r", "text-white", "cursor-pointer")
-                document.getElementById("download").classList.add("cursor-not-allowed", "bg-gray-300", "opacity-50")
+                downloadButton.disabled = true;
+                downloadButton.classList.add("cursor-not-allowed", "bg-gray-300", "opacity-50", "pointer-events-none");
+                downloadButton.classList.remove("bg-gradient-to-r", "text-white", "cursor-pointer");
             }
 
-            document.getElementById("download").addEventListener("click", () => {
-                document.getElementById("output").innerHTML = ""
-                document.getElementById("download").classList.remove("bg-gradient-to-r", "text-white", "cursor-pointer")
-                document.getElementById("download").classList.add("cursor-not-allowed", "bg-gray-300", "opacity-50")
-            })
+            downloadButton.addEventListener("click", () => {
+                document.getElementById("output").innerHTML = "";
+                downloadButton.classList.add("cursor-not-allowed", "bg-gray-300", "opacity-50", "pointer-events-none");
+                downloadButton.classList.remove("bg-gradient-to-r", "text-white", "cursor-pointer");
+            });
         }
     </script>
 </head>
@@ -33,7 +35,7 @@
         <h1 class="text-3xl bg-clip-text text-transparent bg-gradient-to-r">ASCII Art Project</h1>
     </div>
     <div class="flex justify-center flex-col items-center mx-4 md:m-0">
-        <h1 class="font-semibold text-white mt-4">Provide an input, select the style you want, and let the magic happen!</h1>
+        <h1 class="font-semibold text-white mt-2 text-sm">Provide an input, select the style you want, and let the magic happen!</h1>
         <div class="shadow-lg rounded-lg p-4 w-1/3 flex bg-white flex-col gap-4 m-4">
             <form action="/ascii" method="post" class="flex flex-col gap-4">
                 <div class="flex flex-col gap-1">
@@ -49,7 +51,7 @@
                 <input class="shadow-lg p-2 font-semibold text-white rounded-md cursor-pointer bg-gradient-to-r" type="submit" id="sub" value="Get ASCII Art">
             </form>
             <form action="/download" method="POST" class="flex flex-col gap-4">
-                <input type="submit" id="download" class="shadow-lg p-2 font-semibold text-white rounded-md cursor-not-allowed bg-gray-300 opacity-50" value="Save" disabled />
+                <input type="submit" id="download" class="shadow-lg p-2 font-semibold text-white rounded-md cursor-not-allowed bg-gradient-to-r opacity-50 pointer-events-none" value="Save" disabled />
             </form>
         </div>
         <div class="p-4 w-1/3 flex bg-white flex-col gap-4 m-4 shadow-lg rounded-lg overflow">
